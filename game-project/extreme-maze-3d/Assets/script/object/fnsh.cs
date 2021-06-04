@@ -30,6 +30,7 @@ public class fnsh : MonoBehaviour
             Instantiate(finalParticles, transform.position, Quaternion.Euler(-90, 0, 0));
             CoinT.text = coinManagement.totalCoin.ToString();
             sfx.volume = audioVolume;
+            level.easy++;
 
             sfx.PlayOneShot(clip);
 
