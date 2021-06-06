@@ -15,6 +15,7 @@ public class fnsh : MonoBehaviour
     [Header("Coin")]
     public Text CoinT;
     public float coinTime;
+    public Text lvlt;
 
     [Header("Sfx")]
     public AudioSource sfx;
@@ -30,6 +31,7 @@ public class fnsh : MonoBehaviour
             Instantiate(finalParticles, transform.position, Quaternion.Euler(-90, 0, 0));
             CoinT.text = coinManagement.totalCoin.ToString();
             sfx.volume = audioVolume;
+            lvlt.text = level.easy.ToString();
             level.easy++;
 
             sfx.PlayOneShot(clip);
