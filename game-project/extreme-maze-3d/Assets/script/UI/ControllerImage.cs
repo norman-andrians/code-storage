@@ -10,5 +10,10 @@ public class ControllerImage : MonoBehaviour
     void Start()
     {
         image.SetActive(ShowController.controllerShow);
+
+        if (ShowController.controllerShow)
+            Debug.Log(DebugSystem.gameDebug + DebugSystem.uiDebug + "Controller Displayed");
+        else
+            Debug.Log(DebugSystem.gameDebug + DebugSystem.uiDebug + "Controller Hidden");
     }
 }

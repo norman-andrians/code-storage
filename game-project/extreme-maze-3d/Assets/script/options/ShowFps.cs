@@ -5,62 +5,15 @@ using UnityEngine.UI;
 
 public class ShowFps : MonoBehaviour
 {
-    public Button buttonTrue;
-    public Button buttonFalse;
-
-    public Color buttonColor;
-    public Color buttonColorClick;
-
     public static bool fpsShow = true;
 
-    void Update()
+    public void isFpsShow(bool showFps)
     {
-        ColorBlock bct = buttonTrue.colors;
-        ColorBlock bcf = buttonFalse.colors;
+        fpsShow = showFps;
 
         if (fpsShow)
-        {
-            bct.normalColor = buttonColorClick;
-            bct.selectedColor = buttonColorClick;
-            bct.highlightedColor = buttonColorClick;
-            bct.pressedColor = buttonColorClick;
-            bct.disabledColor = buttonColorClick;
-
-            bcf.normalColor = buttonColor;
-            bcf.selectedColor = buttonColor;
-            bcf.highlightedColor = buttonColor;
-            bcf.pressedColor = buttonColor;
-            bcf.pressedColor = buttonColor;
-
-            buttonTrue.colors = bct;
-            buttonFalse.colors = bcf;
-        }
+            Debug.Log(DebugSystem.optionDebug + DebugSystem.uiDebug + " fps displayed in game");
         else
-        {
-            bct.normalColor = buttonColor;
-            bct.selectedColor = buttonColor;
-            bct.highlightedColor = buttonColor;
-            bct.pressedColor = buttonColor;
-            bct.pressedColor = buttonColor;
-
-            bcf.normalColor = buttonColorClick;
-            bcf.selectedColor = buttonColorClick;
-            bcf.highlightedColor = buttonColorClick;
-            bcf.pressedColor = buttonColorClick;
-            bcf.disabledColor = buttonColorClick;
-
-            buttonTrue.colors = bct;
-            buttonFalse.colors = bcf;
-        }
-    }
-
-    public void fpsOn()
-    {
-        fpsShow = true;
-    }
-
-    public void fpsOff()
-    {
-        fpsShow = false;
+            Debug.Log(DebugSystem.optionDebug + DebugSystem.uiDebug +  " fps hidden in game");
     }
 }

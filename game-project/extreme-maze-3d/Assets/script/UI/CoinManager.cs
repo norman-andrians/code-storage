@@ -7,8 +7,7 @@ public class CoinManager : MonoBehaviour
     public AudioSource sfx;
     public AudioClip sound;
 
-    [Range(0f, 1f)]
-    public float audioVolume = 1f;
+    public static float audioVolume = 0.1f;
 
     private void OnCollisionEnter(Collision collision)
     {

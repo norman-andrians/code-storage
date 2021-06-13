@@ -6,8 +6,7 @@ public class ButtonClickAudio : MonoBehaviour
     public AudioSource sfx;
     public AudioClip sounds;
 
-	[Range(0f, 1f)]
-	public float volumeAudio = 1f;
+	public static float volumeAudio = 1f;
 
     public void ClickedSound()
     {
