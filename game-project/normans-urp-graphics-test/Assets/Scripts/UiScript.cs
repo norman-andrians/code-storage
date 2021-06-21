@@ -19,7 +19,7 @@ public class UiScript : MonoBehaviour
     {
     	float fps = 1/Time.deltaTime;
 
-        fpsText.text = fps.ToString() + " FPS";
+        fpsText.text = fps.ToString("F2") + " FPS";
         posText.text = "Location: (("+playerPos.position.x.ToString("F2")+"), ("+playerPos.position.y.ToString("F2")+"), ("+playerPos.position.z.ToString("F2")+"))";
 
         if (fps < 10)

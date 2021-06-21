@@ -33,6 +33,26 @@ public class FpController : MonoBehaviour
 	public GameObject pause;
 	public bool isPaused = false;
 
+	[Header("Trigger")]
+	public string triggerTag;
+
+	[Header("Sounds")]
+	public AudioClip audioCollision1;
+	public AudioClip audioCollision2;
+	public AudioClip audioCollision3;
+	public AudioClip audioCollision4;
+
+	public AudioSource audioSource;
+
+	[Header("Audio Range")]
+	public float audioVolumeMin = .6f;
+	public float audioVolumeMax = 1f;
+
+	public float audioPitchMin = .5f;
+	public float audioPitchMax = 3f;
+
+
+	private bool playerIsTheGround = true;
 
 	private Quaternion defaultRotate = Quaternion.Euler(0f, 0f, 0f); // Rotasi Awal
 	private Quaternion tpRotate = Quaternion.Euler(25f, 0f, 0f); // Rotasi Third Person
@@ -93,39 +113,70 @@ public class FpController : MonoBehaviour
     	Debug.Log("Reset Player Position");
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+    	playerIsTheGround = true;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+    	CollisionAudio();
+    }
+
+    public void CollisionAudio()
+    {
+    	int audioRange = Random.Range(1, 4);
+
+    	float audioVolume = Random.Range(audioVolumeMin, audioVolumeMax);
+    	float audioPitch = Random.Range(audioPitchMin, audioPitchMax);
+
+    	audioSource.volume = audioVolume;
+    	audioSource.pitch = audioPitch;
+
+    	switch (audioRange)
+    	{
+    		case 1:
+    			audioSource.PlayOneShot(audioCollision1);
+    			break;
+    		case 2:
+    			audioSource.PlayOneShot(audioCollision2);
+    			break;
+    		case 3:
+    			audioSource.PlayOneShot(audioCollision3);
+    			break;
+    		case 4:
+    			audioSource.PlayOneShot(audioCollision4);
+    			break;
+    		default:
+    			Debug.Log("Error, Collision Audio Can't be played, audio range shouldn't greater than 4 and smaller than 1");
+    			break;
+    	}
+    }
+
     // fungsi key Input
     public void OnPlayInput()
     {
-    	// input untuk lompat
-    	if (Input.GetKeyDown(KeyCode.Space))
-        {
-        	rb.AddForce(Vector3.up * jumpSpeed);
-        	Debug.Log("Jump!");
-        }
+    	if (Input.GetKeyDown(KeyCode.Space) && playerIsTheGround)
+    	{
+    		rb.AddForce(Vector3.up * jumpSpeed);
+    		playerIsTheGround = false;
+    	}
 
         // input untuk ulang kembali posisi pada player
         if (Input.GetKey(KeyCode.P))
-        {
         	RestartPosition();
-        }
 
         // input untuk ulang kembali scene
         if (Input.GetKey(KeyCode.R))
-        {
         	RestartScene();
-        }
 
         // input untuk mengganti perspektif kamera (dalam pengembangan dan masih bug)
         if (Input.GetKey(KeyCode.F11))
         {
         	if (isFirstPerson)
-        	{
         		onFirstPerson(); // perspektif ketiga diaktifkan
-        	} 
         	else
-        	{
         		nonFirstPerson(); // perspektif ketiga dinonaktifkan
-        	}
         }
 
         // input untuk mengganti Field Of View
@@ -135,9 +186,7 @@ public class FpController : MonoBehaviour
         	Debug.Log("Zoom In");
         }
         else
-        {
         	mainCamera.fieldOfView = 60f;
-        }
 
         // input untuk pause
         if (Input.GetKeyDown(KeyCode.Escape))
