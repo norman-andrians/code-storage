@@ -1,7 +1,7 @@
 ﻿public class DebugSystem
 {
-    public static string optionDebug = "[options]";
-    public static string gameDebug = "[game]";
-    public static string uiDebug = "[ui]";
-    public static string volumeDebug = "[volume]";
+    public string optionDebug = "[options]";
+    public string gameDebug = "[game]";
+    public string uiDebug = "[ui]";
+    public string volumeDebug = "[volume]";
 }

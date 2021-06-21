@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Audio;
 
 public class CoinManager : MonoBehaviour
 {
     public AudioSource sfx;
     public AudioClip sound;
 
-    public static float audioVolume = 0.1f;
+    public float audioVolume = 0.1f;
 
     private void OnCollisionEnter(Collision collision)
     {

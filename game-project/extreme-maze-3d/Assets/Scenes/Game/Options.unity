@@ -571,6 +571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfx: {fileID: 550500889}
   sounds: {fileID: 8300000, guid: ff56938bd6785244384d122e7ed9d403, type: 3}
+  volumeAudio: 1
 --- !u!82 &550500889
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1869,8 +1870,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1555078400}
-        m_MethodName: volumeSfx
-        m_Mode: 0
+        m_MethodName: changeVolume
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2390,6 +2391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1d0de2d612db745979158c2c28a32e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 1174280530}
 --- !u!1 &1592879140
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,6 +2517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298d8d3bfc886214dae503ba34567b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fpsShow: 1
+  fpsSlider: {fileID: 0}
 --- !u!1 &1891419392
 GameObject:
   m_ObjectHideFlags: 0

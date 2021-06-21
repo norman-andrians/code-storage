@@ -8,14 +8,17 @@ public class fpsDetector : MonoBehaviour
     public Text fpsText;
     public GameObject fpsObject;
 
+    DebugSystem debug = new DebugSystem();
+    ShowFps showFps = new ShowFps();
+
     void Start()
     {
-        fpsObject.SetActive(ShowFps.fpsShow);
+        fpsObject.SetActive(showFps.fpsShow);
 
-        if (ShowFps.fpsShow)
-            Debug.Log(DebugSystem.gameDebug + DebugSystem.uiDebug + "FPS Displayed");
+        if (showFps.fpsShow)
+            Debug.Log(debug.gameDebug + debug.uiDebug + "FPS Displayed");
         else
-            Debug.Log(DebugSystem.gameDebug + DebugSystem.uiDebug + "FPS Hidden");
+            Debug.Log(debug.gameDebug + debug.uiDebug + "FPS Hidden");
     }
 
     // Update is called once per frame

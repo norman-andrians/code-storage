@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: c0a7a217a01b6f046af8836ffacdfb83
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: 73b8a1b3a7524504eb31aaa1f4898d95
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Game/Difficulty-Select.unity
+    guid: 43ae5cd2423e95c4dbe9bd410320c02f
+  - enabled: 1
+    path: Assets/Scenes/Game/Options.unity
+    guid: 6e263d58ef298b5458e04ee56f495f14
+  - enabled: 1
+    path: Assets/Scenes/Game/Credits.unity
+    guid: 7cc3de1bb9ea77841854e47c0832afd5
+  - enabled: 1
+    path: Assets/Scenes/Game/Level/Level-Easy.unity
+    guid: f8947e1012c36504db096045faa7e8c9
+  - enabled: 1
+    path: Assets/Scenes/Game/Level/Level-Medium.unity
+    guid: ec32007ffb7c1ff45a3548791b44a59c
+  - enabled: 1
+    path: Assets/Scenes/Game/Level/Level-Hard.unity
+    guid: 08233c23a086b8d44bffab9cd16e7672
+  - enabled: 1
+    path: Assets/Scenes/Game/Level/Easy/easy-level-1.unity
+    guid: 16b9348d543a44d41ac4ff268f9661f8
+  m_configObjects: {}

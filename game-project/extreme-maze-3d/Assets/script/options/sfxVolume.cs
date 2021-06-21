@@ -1,16 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class sfxVolume : MonoBehaviour
 {
-    public static float coinSound = CoinManager.audioVolume * 10;
+    DebugSystem debug = new DebugSystem();
+    ButtonClickAudio btnAudio = new ButtonClickAudio();
+    CoinManager coinAudio = new CoinManager();
 
-    public void volumeSfx(float vsfx)
+    public Slider volumeSlider;
+
+    void Start()
     {
-        ButtonClickAudio.volumeAudio = vsfx;
-        coinSound = vsfx;
+        optionsVolumeData data = optionsSystem.LoadVolumeData();
 
-        Debug.Log(DebugSystem.optionDebug + DebugSystem.volumeDebug + " set SFX Volume to " + vsfx.ToString());
+        volumeSlider.value = data.volume;
+    }
+
+    public void changeVolume()
+    {
+        btnAudio.volumeAudio = volumeSlider.value;
+        coinAudio.audioVolume = volumeSlider.value;
+
+        optionsSystem.SaveVolumeOptions(this);
     }
 }

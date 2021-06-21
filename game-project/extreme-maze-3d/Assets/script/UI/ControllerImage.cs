@@ -6,14 +6,16 @@ public class ControllerImage : MonoBehaviour
 {
     public GameObject image;
 
+    DebugSystem debug = new DebugSystem();
+
     // Start is called before the first frame update
     void Start()
     {
         image.SetActive(ShowController.controllerShow);
 
         if (ShowController.controllerShow)
-            Debug.Log(DebugSystem.gameDebug + DebugSystem.uiDebug + "Controller Displayed");
+            Debug.Log(debug.gameDebug + debug.uiDebug + "Controller Displayed");
         else
-            Debug.Log(DebugSystem.gameDebug + DebugSystem.uiDebug + "Controller Hidden");
+            Debug.Log(debug.gameDebug + debug.uiDebug + "Controller Hidden");
     }
 }
