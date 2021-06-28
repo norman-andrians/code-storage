@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class optionsVolumeData
+public class optionsData
 {
-    public float volume;
+    public bool fullscreenMode;
+    public bool showFps;
+    public bool showctrl;
 
-    public optionsVolumeData (sfxVolume sfxv)
+    public optionsData (Options options)
     {
-        volume = sfxv.volumeSlider.value;
+        fullscreenMode = options.setFullscreen;
+        showFps = options.setFPS;
+        showctrl = options.setController;
     }
 }

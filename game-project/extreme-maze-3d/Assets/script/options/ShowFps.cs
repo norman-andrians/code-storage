@@ -5,32 +5,34 @@ using UnityEngine.UI;
 
 public class ShowFps : MonoBehaviour
 {
-    public bool fpsShow = true;
+    Options options;
+    DebugSystem debug;
 
     public Toggle fpsSlider;
 
-    string fpsShowValue = "true";
+    void Start()
+    {
+        GameObject gameObject = new GameObject();
 
-    DebugSystem debug = new DebugSystem();
+        options = gameObject.AddComponent<Options>();
+        debug = gameObject.AddComponent<DebugSystem>();
+    }
 
     public void isFpsShow(bool change)
     {
-        fpsShow = fpsSlider.isOn;
-        Save();
+        if (change)
+        {
+            options.setFPS = true;
 
-        if (fpsShow)
             Debug.Log(debug.optionDebug + debug.uiDebug + " fps displayed in game");
+        }
         else
-            Debug.Log(debug.optionDebug + debug.uiDebug +  " fps hidden in game");
-    }
+        {
+            options.setFPS = false;
 
-    public void Load()
-    {
-        fpsShowValue = PlayerPrefs.GetString("ShowFps");
-    }
+            Debug.Log(debug.optionDebug + debug.uiDebug + " fps hidden in game");
+        }
 
-    public void Save()
-    {
-        PlayerPrefs.SetString("ShowFps", fpsShowValue);
+        options.SaveOptions();
     }
 }

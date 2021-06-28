@@ -4,19 +4,21 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class optionsSystem
 {
-    public static void SaveVolumeOptions (sfxVolume sfxv)
+    public static void SaveOptions (Options options)
     {
         BinaryFormatter formatting = new BinaryFormatter();
         string path = Application.persistentDataPath + "/options.dat";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        optionsVolumeData volumeDat = new optionsVolumeData(sfxv);
+        optionsData optionsDat = new optionsData(options);
 
-        formatting.Serialize(stream, volumeDat);
+        formatting.Serialize(stream, optionsDat);
         stream.Close();
+
+        Debug.Log("[SaveSystem][Options] Save Data To " + path + " Complete");
     }
 
-    public static optionsVolumeData LoadVolumeData ()
+    public static optionsData LoadOptionsData ()
     {
         string path = Application.persistentDataPath + "/options.dat";
         if (File.Exists(path))
@@ -24,14 +26,17 @@ public static class optionsSystem
             BinaryFormatter formating = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
-            optionsVolumeData data = formating.Deserialize(stream) as optionsVolumeData;
+            optionsData data = formating.Deserialize(stream) as optionsData;
             stream.Close();
+
+            Debug.Log("[SaveSystem][Options] Load Data To " + path + " Complete");
 
             return data;
         }
         else
         {
             Debug.LogError("Error, " + path + " Not Found");
+
             return null;
         }
     }

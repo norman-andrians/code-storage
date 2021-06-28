@@ -5,24 +5,22 @@ using UnityEngine.UI;
 
 public class sfxVolume : MonoBehaviour
 {
-    DebugSystem debug = new DebugSystem();
-    ButtonClickAudio btnAudio = new ButtonClickAudio();
-    CoinManager coinAudio = new CoinManager();
+    CoinManager coinAudio;
+    ButtonClickAudio btnAudio;
 
     public Slider volumeSlider;
 
     void Start()
     {
-        optionsVolumeData data = optionsSystem.LoadVolumeData();
+        GameObject gameObject = new GameObject();
 
-        volumeSlider.value = data.volume;
+        coinAudio = gameObject.AddComponent<CoinManager>();
+        btnAudio = gameObject.AddComponent<ButtonClickAudio>();
     }
 
     public void changeVolume()
     {
         btnAudio.volumeAudio = volumeSlider.value;
         coinAudio.audioVolume = volumeSlider.value;
-
-        optionsSystem.SaveVolumeOptions(this);
     }
 }

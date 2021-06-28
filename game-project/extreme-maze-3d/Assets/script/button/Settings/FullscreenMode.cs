@@ -4,18 +4,35 @@ using UnityEngine;
 
 public class FullscreenMode : MonoBehaviour
 {
-    public static bool Fullscreen = true;
+    Options options;
+    DebugSystem debug;
 
-    DebugSystem debug = new DebugSystem();
+    void Start()
+    {
+        GameObject gameObject = new GameObject();
+
+        options = gameObject.AddComponent<Options>();
+        debug = gameObject.AddComponent<DebugSystem>();
+    }
 
     public void setFullscreenMode(bool isFullscreen)
     {
-        Fullscreen = isFullscreen;
-        Screen.fullScreen = Fullscreen;
+        isFullscreen = options.setFullscreen;
+        Screen.fullScreen = options.setFullscreen;
 
-    if (Fullscreen)
-        Debug.Log(debug.optionDebug + " Fullscreen Mode is true");
-    else
-        Debug.Log(debug.optionDebug + " Fullscreen Mode is false");
+        if (isFullscreen)
+        {
+            options.setFullscreen = true;
+
+            Debug.Log(debug.optionDebug + " Fullscreen Mode is true");
+        }
+        else
+        {
+            options.setFullscreen = false;
+
+            Debug.Log(debug.optionDebug + " Fullscreen Mode is false");
+        }
+
+        options.SaveOptions();
     }
 }

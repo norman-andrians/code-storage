@@ -4,17 +4,32 @@ using UnityEngine;
 
 public class ShowController : MonoBehaviour
 {
-    public static bool controllerShow = true;
+    DebugSystem debug;
+    Options options;
 
-    DebugSystem debug = new DebugSystem();
+    void Start()
+    {
+        GameObject gameObject = new GameObject();
+
+        debug = gameObject.AddComponent<DebugSystem>();
+        options = gameObject.AddComponent<Options>();
+    }
 
     public void showController(bool isControlShow)
     {
-        controllerShow = isControlShow;
+        if (isControlShow)
+        {
+            options.setController = true;
 
-        if (controllerShow)
             Debug.Log(debug.optionDebug + debug.uiDebug + " controller image displayed in game");
+        }
         else
+        {
+            options.setController = false;
+
             Debug.Log(debug.optionDebug + debug.uiDebug + " controller image hidden in game");
+        }
+
+        options.SaveOptions();
     }
 }
