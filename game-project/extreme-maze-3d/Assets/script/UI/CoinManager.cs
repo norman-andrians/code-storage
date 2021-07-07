@@ -6,7 +6,18 @@ public class CoinManager : MonoBehaviour
     public AudioSource sfx;
     public AudioClip sound;
 
-    public float audioVolume = 0.1f;
+    LoadOptionInLevel loadOption;
+
+    public float audioVolume;
+
+    void OnEnable()
+    {
+        GameObject gameObject = new GameObject();
+
+        loadOption = gameObject.AddComponent<LoadOptionInLevel>();
+
+        audioVolume = loadOption.volumeSfx / 10;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

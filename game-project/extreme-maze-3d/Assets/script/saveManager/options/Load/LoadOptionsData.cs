@@ -1,27 +1,24 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using System.IO;
 
-public class LoadOptionInLevel : MonoBehaviour
+public class LoadOptionsData : MonoBehaviour
 {
-    public bool isFps;
-    public bool isCtrl;
-    public bool isBloom;
     public float volumeSfx;
 
     public Options options = new Options();
 
+    // Start is called before the first frame update
     void OnEnable()
     {
-        LoadOptionsInGame();
+        LoadOptionsDat();
     }
 
-    public void LoadOptionsInGame()
+    public void LoadOptionsDat()
     {
         options = JsonUtility.FromJson<Options>(File.ReadAllText(Application.persistentDataPath + "/options.json"));
 
-        isFps = options.setFPS;
-        isCtrl = options.setController;
-        isBloom = options.setBloom;
         volumeSfx = options.volumeSfx;
 
         if (File.Exists(Application.persistentDataPath + "/options.json"))

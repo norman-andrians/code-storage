@@ -6,7 +6,18 @@ public class ButtonClickAudio : MonoBehaviour
     public AudioSource sfx;
     public AudioClip sounds;
 
-	public float volumeAudio = 1f;
+    LoadOptionsData loadOptions;
+
+	public float volumeAudio;
+
+    void Start()
+    {
+        GameObject gameObject = new GameObject();
+
+        loadOptions = gameObject.AddComponent<LoadOptionsData>();
+
+        volumeAudio = loadOptions.volumeSfx;
+    }
 
     public void ClickedSound()
     {

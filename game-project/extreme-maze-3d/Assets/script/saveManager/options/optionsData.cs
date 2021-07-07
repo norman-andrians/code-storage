@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 
@@ -9,6 +7,10 @@ public class optionsData : MonoBehaviour
     public Toggle fullScreenToggle;
     public Toggle fpsToggle;
     public Toggle ctrlToggle;
+    public Toggle bloomToggle;
+
+    public Slider volumeSlider;
+    public Dropdown qualityLevelDropdown;
 
     public Options options = new Options();
 
@@ -41,19 +43,50 @@ public class optionsData : MonoBehaviour
         SaveOptions();
     }
 
+    public void sfxVolume()
+    {
+        options.volumeSfx = volumeSlider.value;
+        Debug.Log("SFX Volume is " + options.volumeSfx.ToString("F"));
+
+        SaveOptions();
+    }
+
+    public void postProcessingBloom()
+    {
+        options.setBloom = bloomToggle.isOn;
+        Debug.Log("Bloom is " + options.setBloom.ToString());
+
+        SaveOptions();
+    }
+
+    public void graphicQuality()
+    {
+        string qualityLevelMsg;
+
+        options.qualityLevel = qualityLevelDropdown.value;
+        QualitySettings.SetQualityLevel(options.qualityLevel);
+
+        switch (options.qualityLevel)
+        {
+            case 0: qualityLevelMsg = "low"; break;
+            case 1: qualityLevelMsg = "medium"; break;
+            case 2: qualityLevelMsg = "high"; break;
+            case 3: qualityLevelMsg = "very high"; break;
+            default: qualityLevelMsg = "Null"; break;
+        }
+
+        Debug.Log("Quality set to " + qualityLevelMsg);
+    }
+
     public void SaveOptions()
     {
         string jsonDat = JsonUtility.ToJson(options, true);
         File.WriteAllText(Application.persistentDataPath + "/options.json", jsonDat);
 
         if (File.Exists(Application.persistentDataPath + "/options.json"))
-        {
             Debug.Log("Saving Options Data File To " + Application.persistentDataPath + "/options.json" + " Succesful");
-        }
         else
-        {
             Debug.LogError("Unknown Error: Failed to Save Options Data to " + Application.persistentDataPath + "/options.json");
-        }
     }
     
     public void LoadOptions()
@@ -63,6 +96,9 @@ public class optionsData : MonoBehaviour
         fullScreenToggle.isOn = options.setFullscreen;
         fpsToggle.isOn = options.setFPS;
         ctrlToggle.isOn = options.setController;
+        volumeSlider.value = options.volumeSfx;
+        qualityLevelDropdown.value = options.qualityLevel;
+        bloomToggle.isOn = options.setBloom;
 
         Debug.Log("Load Options Data File To " + Application.persistentDataPath + "/options.json");
     }
