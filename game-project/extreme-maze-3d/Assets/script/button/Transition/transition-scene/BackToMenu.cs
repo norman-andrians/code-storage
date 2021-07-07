@@ -9,7 +9,7 @@ public class BackToMenu : MonoBehaviour
 
 	public float transitionTime = 0.5f;
 
-	public void LoadToMenu() {
+    public void LoadToMenu() {
 		StartCoroutine(SceneMenu());
 	}
 

@@ -12,9 +12,9 @@ public class GeneralDebugging : MonoBehaviour
     {
         GameObject gameObject = new GameObject();
 
-        options = gameObject.AddComponent<Options>();
+        options = new Options();
         debug = gameObject.AddComponent<DebugSystem>();
 
-        Debug.Log(debug.optionDebug + debug.uiDebug + " FPS is " + options.setFPS);
+        Debug.Log(debug.optionDebug + debug.uiDebug + DebugSystem.currentScene("menu") + " FPS is " + options.setFPS);
     }
 }

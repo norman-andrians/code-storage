@@ -5,7 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class EasyLevelEvent : MonoBehaviour
 {
+    public GameObject loadingImage;
+    public Animator loadingBar;
+
+    public float transitionTime = 7f;
+
     public void Level1() {
-    	SceneManager.LoadScene("easy-level-1");
+        StartCoroutine(loadingScene("easy-level"));
+    }
+
+    IEnumerator loadingScene(string scene)
+    {
+        loadingImage.SetActive(true);
+        loadingBar.SetTrigger("Loading");
+
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(scene);
     }
 }

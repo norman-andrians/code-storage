@@ -4,6 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class optionsSystem
 {
+    /*
     public static void SaveOptions (Options options)
     {
         BinaryFormatter formatting = new BinaryFormatter();
@@ -40,4 +41,5 @@ public static class optionsSystem
             return null;
         }
     }
+    */
 }

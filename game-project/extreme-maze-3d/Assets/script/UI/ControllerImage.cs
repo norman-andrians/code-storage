@@ -7,7 +7,7 @@ public class ControllerImage : MonoBehaviour
     public GameObject image;
 
     DebugSystem debug;
-    Options options;
+    LoadOptionInLevel options;
 
     // Start is called before the first frame update
     void Start()
@@ -15,11 +15,11 @@ public class ControllerImage : MonoBehaviour
         GameObject gameObject = new GameObject();
 
         debug = gameObject.AddComponent<DebugSystem>();
-        options = gameObject.AddComponent<Options>();
+        options = gameObject.AddComponent<LoadOptionInLevel>();
 
-        image.SetActive(options.setController);
+        image.SetActive(options.isCtrl);
 
-        if (options.setController)
+        if (options.isCtrl)
             Debug.Log(debug.gameDebug + debug.uiDebug + "Controller Displayed");
         else
             Debug.Log(debug.gameDebug + debug.uiDebug + "Controller Hidden");

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShowController : MonoBehaviour
 {
+    /*
     DebugSystem debug;
     Options options;
 
@@ -12,7 +13,6 @@ public class ShowController : MonoBehaviour
         GameObject gameObject = new GameObject();
 
         debug = gameObject.AddComponent<DebugSystem>();
-        options = gameObject.AddComponent<Options>();
     }
 
     public void showController(bool isControlShow)
@@ -32,4 +32,5 @@ public class ShowController : MonoBehaviour
 
         options.SaveOptions();
     }
+    */
 }

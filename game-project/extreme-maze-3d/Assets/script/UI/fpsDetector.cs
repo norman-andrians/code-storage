@@ -9,18 +9,18 @@ public class fpsDetector : MonoBehaviour
     public GameObject fpsObject;
 
     DebugSystem debug;
-    Options options;
+    LoadOptionInLevel options;
 
     void Start()
     {
         GameObject gameObject = new GameObject();
 
         debug = gameObject.AddComponent<DebugSystem>();
-        options = gameObject.AddComponent<Options>();
+        options = gameObject.AddComponent<LoadOptionInLevel>();
 
-        fpsObject.SetActive(options.setFPS);
+        fpsObject.SetActive(options.isFps);
 
-        if (options.setFPS)
+        if (options.isFps)
             Debug.Log(debug.gameDebug + debug.uiDebug + "FPS Displayed");
         else
             Debug.Log(debug.gameDebug + debug.uiDebug + "FPS Hidden");

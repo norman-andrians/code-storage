@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ShowFps : MonoBehaviour
 {
+    /*
     Options options;
     DebugSystem debug;
 
@@ -14,7 +15,6 @@ public class ShowFps : MonoBehaviour
     {
         GameObject gameObject = new GameObject();
 
-        options = gameObject.AddComponent<Options>();
         debug = gameObject.AddComponent<DebugSystem>();
     }
 
@@ -35,4 +35,5 @@ public class ShowFps : MonoBehaviour
 
         options.SaveOptions();
     }
+    */
 }
