@@ -21,8 +21,17 @@ public class fnsh : MonoBehaviour
     public AudioSource sfx;
     public AudioClip clip;
 
-    [Range(0f, 1f)]
-    public float audioVolume = 1f;
+    public float audioVolume;
+
+    LoadOptionInLevel loadOption;
+
+    void Start()
+    {
+        GameObject gameObject = new GameObject();
+        loadOption = gameObject.AddComponent<LoadOptionInLevel>();
+
+        audioVolume = loadOption.volumeSfx / 5;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

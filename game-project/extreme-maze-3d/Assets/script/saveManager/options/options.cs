@@ -1,4 +1,5 @@
-﻿public class Options
+﻿// this where options are changes
+public class Options
 {
     // what?
     public string messagesForYouReadThisFile = "Hayoloh ngapain lo :v";

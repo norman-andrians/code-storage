@@ -33,6 +33,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Game/Level/Level-Hard.unity
     guid: 08233c23a086b8d44bffab9cd16e7672
   - enabled: 1
-    path: Assets/Scenes/Game/Level/Easy/easy-level-1.unity
+    path: Assets/Scenes/Game/Level/Easy/easy-level.unity
     guid: 16b9348d543a44d41ac4ff268f9661f8
   m_configObjects: {}

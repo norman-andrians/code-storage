@@ -25,7 +25,7 @@ public class LoadOptionInLevel : MonoBehaviour
         volumeSfx = options.volumeSfx;
 
         if (File.Exists(Application.persistentDataPath + "/options.json"))
-            Debug.Log("File On " + Application.persistentDataPath + "/options" + "has been loaded");
+            Debug.Log("File On " + Application.persistentDataPath + "/options" + " has been loaded");
         else
             Debug.LogError("File On " + Application.persistentDataPath + "/options" + " failed to loaded");
     }

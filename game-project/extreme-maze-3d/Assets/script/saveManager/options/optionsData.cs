@@ -102,4 +102,29 @@ public class optionsData : MonoBehaviour
 
         Debug.Log("Load Options Data File To " + Application.persistentDataPath + "/options.json");
     }
+
+    public void ResetOptions()
+    {
+        fullScreenToggle.isOn = true;
+        fpsToggle.isOn = true;
+        ctrlToggle.isOn = true;
+        volumeSlider.value = 1;
+        qualityLevelDropdown.value = 2;
+        bloomToggle.isOn = true;
+
+        options.setFullscreen = Screen.fullScreen = fullScreenToggle.isOn;
+        options.setFPS = fpsToggle.isOn;
+        options.setController = ctrlToggle.isOn;
+        options.volumeSfx = volumeSlider.value;
+        options.setBloom = bloomToggle.isOn;
+
+        if (fullScreenToggle.isOn && fpsToggle.isOn && ctrlToggle.isOn && volumeSlider.value == 1 &&
+            qualityLevelDropdown.value == 2 && bloomToggle.isOn)
+        {
+            SaveOptions();
+            Debug.Log("Reset All Options Data");
+        }
+        else
+            Debug.LogError("Failed to reset All Options Data");
+    }
 }

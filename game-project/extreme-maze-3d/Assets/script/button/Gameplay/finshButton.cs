@@ -13,8 +13,17 @@ public class finshButton : MonoBehaviour
     public AudioSource sfx;
     public AudioClip clip;
 
-    [Range(0f, 1f)]
-    public float audioVolume = 1f;
+    public float audioVolume;
+
+    LoadOptionsData loadOptions;
+
+    void Start()
+    {
+        GameObject gameObject = new GameObject();
+        loadOptions = gameObject.AddComponent<LoadOptionsData>();
+
+        audioVolume = loadOptions.volumeSfx;
+    }
 
     public void quitButton()
     {

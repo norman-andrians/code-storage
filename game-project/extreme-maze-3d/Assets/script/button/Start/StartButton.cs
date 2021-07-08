@@ -7,9 +7,23 @@ public class StartButton : MonoBehaviour
 {
     public Animator transition;
 
-    public bool isStart = false;
+    public AudioSource audioSource;
+    public AudioClip clickSound;
 
+    LoadOptionsData loadOptions;
+
+    public bool isStart = false;
     public float transitionTime = 1f;
+    public float audioSound;
+
+    void Start()
+    {
+        GameObject gameObject = new GameObject();
+
+        loadOptions = gameObject.AddComponent<LoadOptionsData>();
+
+        audioSound = loadOptions.volumeSfx;
+    }
 
     void Update()
     {
@@ -17,6 +31,9 @@ public class StartButton : MonoBehaviour
         {
             if (Input.anyKey)
             {
+                audioSource.volume = audioSound;
+                audioSource.PlayOneShot(clickSound);
+
                 StartCoroutine(StartGame());
             }
         }
